@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `XnO`,
-    description: `Making better connections`,
+    description: `Makw better connections.`,
     author: `@xno`,
     siteUrl: `https://xno.dating/`,
   },
