@@ -8,6 +8,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
@@ -34,6 +35,14 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
+        <div
+          style={{
+            marginTop: `2rem`,
+            textAlign: "center",
+          }}
+        >
+          <Link to="/terms/">Terms and Conditions</Link> <br />
+        </div>
         <footer
           style={{
             marginTop: `2rem`,
