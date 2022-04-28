@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const DownloadBtn = ({ DownloadBtn }) => {
   return (
-    <div className="flex justify-start flex-wrap gap-10 md:items-center sm:justify-center ssm:justify-center mt-10">
+    <div className="flex justify-start sm:justify-center lg:justify-start flex-wrap gap-10 mt-10 sm:mb-14">
       <div>
         {" "}
         <StaticImage
@@ -12,7 +12,7 @@ const DownloadBtn = ({ DownloadBtn }) => {
           formats={["auto", "webp", "avif"]}
           placeholder="tracedSVG"
           alt="XNO -  Make better connections"
-          className="w-48 sm:w-72 ssm:w-72"
+          className="w-52 "
         />
       </div>
       <div>
@@ -23,7 +23,7 @@ const DownloadBtn = ({ DownloadBtn }) => {
           formats={["auto", "webp", "avif"]}
           placeholder="tracedSVG"
           alt="XNO -  Make better connections"
-          className="w-48 sm:w-72 ssm:w-72"
+          className="w-52 "
         />
       </div>
     </div>
