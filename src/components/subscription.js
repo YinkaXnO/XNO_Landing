@@ -5,7 +5,7 @@ const Subscription = () => {
   //mailchimp
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
+  const [showSuccess, setShowSuccess] = useState("")
   const [showFailure, setShowFailure] = useState(false)
 
   const _handleChange = e => {
@@ -16,9 +16,10 @@ const Subscription = () => {
     e.preventDefault()
     setIsSubmitting(true)
     const result = await addToMailchimp(email)
+    console.log(result)
     setIsSubmitting(false)
     if (result.result === "success") {
-      setShowSuccess(true)
+      setShowSuccess(result.msg)
       setEmail("")
     } else if (result.result === "error") {
       setShowFailure(true)
@@ -46,9 +47,7 @@ const Subscription = () => {
           </p>
         </button>
       </form>
-      {showSuccess && (
-        <p className="text-dark text-md mt-2">Thank you for subscribing.</p>
-      )}
+      {showSuccess && <p className="text-dark text-md mt-2">{showSuccess}</p>}
       {showFailure && (
         <p className="text-dark text-md mt-2">Please try again.</p>
       )}
