@@ -23,6 +23,7 @@ const Subscription = () => {
         setIsSubmitting(false)
         if (result.result === "success") {
           setShowSuccess(result.msg)
+          setShowFailure(false)
           setEmail("")
         } else if (result.result === "error") {
           setShowFailure(true)
