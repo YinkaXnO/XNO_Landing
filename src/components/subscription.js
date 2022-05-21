@@ -1,5 +1,9 @@
 import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha,
+} from "react-google-recaptcha-v3"
 
 const Subscription = () => {
   //mailchimp
@@ -7,6 +11,7 @@ const Subscription = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState("")
   const [showFailure, setShowFailure] = useState(false)
+  const [token, setToken] = useState("")
 
   const _handleChange = e => {
     setEmail(e.target.value)
@@ -26,8 +31,12 @@ const Subscription = () => {
     }
   }
 
+  const handleVerify = token => {
+    setToken(token)
+  }
+
   return (
-    <>
+    <GoogleReCaptchaProvider reCaptchaKey="6LflAwcgAAAAAOjbJBTWoTqIA1i3uxXs33aKGxrM">
       <form className="flex" onSubmit={event => _handleMailchimpSubmit(event)}>
         <input
           className="text-xl font-medium w-full max-w-x rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
@@ -46,12 +55,13 @@ const Subscription = () => {
             {isSubmitting ? "Submitting" : "Sign up"}
           </p>
         </button>
+        <GoogleReCaptcha onVerify={handleVerify} />
       </form>
       {showSuccess && <p className="text-dark text-md mt-2">{showSuccess}</p>}
       {showFailure && (
         <p className="text-dark text-md mt-2">Please try again.</p>
       )}
-    </>
+    </GoogleReCaptchaProvider>
   )
 }
 
