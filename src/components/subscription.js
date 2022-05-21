@@ -20,13 +20,19 @@ const Subscription = () => {
   const _handleMailchimpSubmit = async e => {
     e.preventDefault()
     setIsSubmitting(true)
-    const result = await addToMailchimp(email)
-    console.log(result)
-    setIsSubmitting(false)
-    if (result.result === "success") {
-      setShowSuccess(result.msg)
-      setEmail("")
-    } else if (result.result === "error") {
+    try {
+      const result = await addToMailchimp(email)
+      console.log(result)
+      setIsSubmitting(false)
+      if (result.result === "success") {
+        setShowSuccess(result.msg)
+        setEmail("")
+      } else if (result.result === "error") {
+        setShowFailure(true)
+      }
+    } catch (err) {
+      console.log(err.message)
+      setIsSubmitting(false)
       setShowFailure(true)
     }
   }
